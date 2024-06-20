@@ -85,6 +85,7 @@ public class CameraManager : MonoBehaviour
         }
     }
     bool stopUI = false;
+    /*
     protected virtual void OnGUI()
     {
         if (!stopUI)
@@ -116,6 +117,6 @@ public class CameraManager : MonoBehaviour
             }
             GUILayout.EndArea();
         }
-    }
+    }*/
 
 }

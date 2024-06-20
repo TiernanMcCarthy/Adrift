@@ -22,34 +22,14 @@ namespace Fusion {
   [AddComponentMenu("")]
   public sealed class RunnerVisibilityLink : MonoBehaviour {
 
-    [StaticField(StaticFieldResetMode.None)]
-    [Obsolete]
-    private static readonly System.Type[] _recognizedBehaviourTypes = {
-      typeof(IRunnerVisibilityRecognizedType),
-      typeof(Renderer),
-      typeof(AudioListener),
-      typeof(Camera),
-      typeof(Canvas),
-      typeof(Light)
-    };
-
-    /// <summary>
-    /// Types that fusion.runtime isn't aware of, which need to be found using names instead.
-    /// </summary>
-    [StaticField(StaticFieldResetMode.None)]
-    [Obsolete]
-    private static readonly string[] _recognizedBehaviourNames = {
-      "EventSystem"
-    };
-
     /// <summary>
     /// The peer runner that will be used if more than one runner is visible, and this node was manually added by developer (indicating only one instance should be visible at a time).
     /// </summary>
     public enum PreferredRunners {
       /// <summary>
-      /// The peer/runner with input authority will be used if visible.
+      /// None.
       /// </summary>
-      InputAuthority,
+      None,
       /// <summary>
       /// The server peer/runner will be used if visible.
       /// </summary>
@@ -58,6 +38,10 @@ namespace Fusion {
       /// The first client peer/runner will be used if visible.
       /// </summary>
       Client,
+      /// <summary>
+      /// The peer/runner with input authority will be used if visible. 
+      /// </summary>
+      InputAuthority,
     }
 
     private enum ComponentType {
@@ -95,6 +79,7 @@ namespace Fusion {
     // cached runtime
     internal NetworkRunner _runner;
     private ComponentType _componentType;
+    private NetworkObject _networkObject;
     private bool _originalState;
 
     /// <summary>
@@ -173,8 +158,14 @@ namespace Fusion {
       this.UnregisterNode();
     }
 
-    internal void Initialize(UnityEngine.Component comp, NetworkRunner runner, LinkedListNode<RunnerVisibilityLink> node) {
+    internal void Initialize(UnityEngine.Component comp, NetworkRunner runner) {
       _runner = runner;
+      
+      // First look into children
+      _networkObject = GetComponentInChildren<NetworkObject>();
+      if (_networkObject == false)
+        _networkObject = GetComponentInParent<NetworkObject>();
+      
       if (comp is Renderer renderer) {
         _componentType = ComponentType.Renderer;
         _originalState = renderer.enabled;
@@ -218,11 +209,18 @@ namespace Fusion {
         //if (_originalState == true && Enabled == false) {
         //  _originalState = false;
         //}
-
+        
         Enabled = false;
       }
     }
 
+    public bool IsInputAuth() {
+      if (_networkObject && _networkObject.IsValid) {
+        return _networkObject.HasInputAuthority;
+      } 
+
+      return false;
+    }
   }
 }
 

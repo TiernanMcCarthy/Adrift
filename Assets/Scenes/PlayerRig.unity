@@ -320,8 +320,8 @@ GameObject:
   - component: {fileID: 298647584}
   - component: {fileID: 298647583}
   - component: {fileID: 298647582}
-  - component: {fileID: 298647587}
   - component: {fileID: 298647586}
+  - component: {fileID: 298647587}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -357,7 +357,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &298647583
@@ -437,8 +437,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2740489378
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
@@ -822,6 +820,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1431095450282535721, guid: 395297e90cb0f4b4c823d9e5797da520,
         type: 3}
+      propertyPath: gameMode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431095450282535721, guid: 395297e90cb0f4b4c823d9e5797da520,
+        type: 3}
       propertyPath: userPrefab
       value: 
       objectReference: {fileID: 634766472901629932, guid: ac9b2ec9cce047e4b909ac4685ceaf5e,
@@ -855,6 +858,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431095450717022717, guid: 395297e90cb0f4b4c823d9e5797da520,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000045776367
+      objectReference: {fileID: 0}
+    - target: {fileID: 1431095450717022717, guid: 395297e90cb0f4b4c823d9e5797da520,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.000015258789
       objectReference: {fileID: 0}
     - target: {fileID: 1431095450872632900, guid: 395297e90cb0f4b4c823d9e5797da520,
         type: 3}
@@ -952,8 +965,8 @@ GameObject:
   - component: {fileID: 427704931}
   - component: {fileID: 427704930}
   - component: {fileID: 427704929}
-  - component: {fileID: 427704934}
   - component: {fileID: 427704933}
+  - component: {fileID: 427704934}
   m_Layer: 0
   m_Name: Sphere (7)
   m_TagString: Untagged
@@ -989,7 +1002,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &427704930
@@ -1069,8 +1082,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2545811128
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -1110,8 +1121,8 @@ GameObject:
   - component: {fileID: 448564980}
   - component: {fileID: 448564979}
   - component: {fileID: 448564978}
-  - component: {fileID: 448564983}
   - component: {fileID: 448564982}
+  - component: {fileID: 448564983}
   m_Layer: 0
   m_Name: Sphere (6)
   m_TagString: Untagged
@@ -1147,7 +1158,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &448564979
@@ -1227,9 +1238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2864320598
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
-  Flags: 1
+  Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 448564983}
@@ -1255,37 +1264,6 @@ MonoBehaviour:
     Position: 0.01
     Rotation: 0.01
     Scale: 0.01
---- !u!1 &520687699
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 520687700}
-  m_Layer: 0
-  m_Name: Hold Space
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &520687700
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 520687699}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.255, z: 1.974}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1392616353}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &611121929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1396,8 +1374,8 @@ GameObject:
   - component: {fileID: 674594450}
   - component: {fileID: 674594449}
   - component: {fileID: 674594448}
-  - component: {fileID: 674594453}
   - component: {fileID: 674594452}
+  - component: {fileID: 674594453}
   m_Layer: 0
   m_Name: Sphere (10)
   m_TagString: Untagged
@@ -1433,7 +1411,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &674594449
@@ -1513,8 +1491,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2724300061
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -1632,8 +1608,8 @@ GameObject:
   - component: {fileID: 875720105}
   - component: {fileID: 875720104}
   - component: {fileID: 875720103}
-  - component: {fileID: 875720108}
   - component: {fileID: 875720107}
+  - component: {fileID: 875720108}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1669,7 +1645,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &875720104
@@ -1749,8 +1725,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2004178692
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -1887,8 +1861,8 @@ GameObject:
   - component: {fileID: 1040605059}
   - component: {fileID: 1040605058}
   - component: {fileID: 1040605057}
-  - component: {fileID: 1040605062}
   - component: {fileID: 1040605061}
+  - component: {fileID: 1040605062}
   m_Layer: 0
   m_Name: Sphere (8)
   m_TagString: Untagged
@@ -1924,7 +1898,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &1040605058
@@ -2004,8 +1978,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2429432338
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -2045,8 +2017,8 @@ GameObject:
   - component: {fileID: 1166309874}
   - component: {fileID: 1166309873}
   - component: {fileID: 1166309872}
-  - component: {fileID: 1166309877}
   - component: {fileID: 1166309876}
+  - component: {fileID: 1166309877}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -2082,7 +2054,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &1166309873
@@ -2162,8 +2134,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 806656550
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -2249,8 +2219,8 @@ GameObject:
   - component: {fileID: 1244739305}
   - component: {fileID: 1244739304}
   - component: {fileID: 1244739303}
-  - component: {fileID: 1244739308}
   - component: {fileID: 1244739307}
+  - component: {fileID: 1244739308}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -2286,7 +2256,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &1244739304
@@ -2366,9 +2336,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 724418628
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
-  Flags: 1
+  Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1244739308}
@@ -2509,202 +2477,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &1380520609
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1380520611}
-  - component: {fileID: 1380520610}
-  - component: {fileID: 1380520612}
-  m_Layer: 0
-  m_Name: CameraHolder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1380520610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380520609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01078fd7c372e3d45bf99120b1ed6bd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraPostion: {fileID: 0}
---- !u!4 &1380520611
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380520609}
-  m_LocalRotation: {x: 0.09229586, y: -0.7010569, z: 0.09229573, w: 0.70105803}
-  m_LocalPosition: {x: 57.414093, y: 2.79, z: -0.3631649}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1392616353}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 15, y: -90, z: 0}
---- !u!114 &1380520612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380520609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1254632b54341934ab2c29f609de98d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modes:
-  - modeName: Menu
-    parent: {fileID: 0}
-    FOV: 0
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    resetPos: 0
-  - modeName: Game
-    parent: {fileID: 0}
-    FOV: 90
-    position: {x: 0, y: 0, z: 0}
-    rotation: {x: 0, y: 0, z: 0}
-    resetPos: 0
-  cam: {fileID: 1392616352}
-  connexionManager: {fileID: 395995483}
-  raycastPoint: {fileID: 2009257691}
-  grabPosition: {fileID: 520687700}
---- !u!1 &1392616350
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1392616353}
-  - component: {fileID: 1392616352}
-  - component: {fileID: 1392616351}
-  - component: {fileID: 1392616354}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &1392616351
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392616350}
-  m_Enabled: 1
---- !u!20 &1392616352
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392616350}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 90
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &1392616353
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392616350}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 520687700}
-  - {fileID: 2009257691}
-  m_Father: {fileID: 1380520611}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1392616354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1392616350}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RenderShadows: 1
-  m_RequiresDepthTextureOption: 2
-  m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
-  m_Cameras: []
-  m_RendererIndex: -1
-  m_VolumeLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
-  m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
-  m_ClearDepth: 1
-  m_AllowXRRendering: 1
-  m_RequiresDepthTexture: 0
-  m_RequiresColorTexture: 0
-  m_Version: 2
 --- !u!1 &1393980194
 GameObject:
   m_ObjectHideFlags: 0
@@ -2912,8 +2684,8 @@ GameObject:
   - component: {fileID: 1747879607}
   - component: {fileID: 1747879606}
   - component: {fileID: 1747879605}
-  - component: {fileID: 1747879610}
   - component: {fileID: 1747879609}
+  - component: {fileID: 1747879610}
   m_Layer: 0
   m_Name: Cube (3)
   m_TagString: Untagged
@@ -2949,7 +2721,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &1747879606
@@ -3029,8 +2801,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 2130904391
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -3070,8 +2840,8 @@ GameObject:
   - component: {fileID: 1764736955}
   - component: {fileID: 1764736954}
   - component: {fileID: 1764736953}
-  - component: {fileID: 1764736958}
   - component: {fileID: 1764736957}
+  - component: {fileID: 1764736958}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -3107,7 +2877,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &1764736954
@@ -3187,8 +2957,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 3615880540
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
@@ -3228,8 +2996,8 @@ GameObject:
   - component: {fileID: 1810953079}
   - component: {fileID: 1810953078}
   - component: {fileID: 1810953077}
-  - component: {fileID: 1810953082}
   - component: {fileID: 1810953081}
+  - component: {fileID: 1810953082}
   m_Layer: 0
   m_Name: Sphere (9)
   m_TagString: Untagged
@@ -3265,7 +3033,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &1810953078
@@ -3345,8 +3113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 1385408821
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -3386,8 +3152,8 @@ GameObject:
   - component: {fileID: 1878579167}
   - component: {fileID: 1878579166}
   - component: {fileID: 1878579165}
-  - component: {fileID: 1878579170}
   - component: {fileID: 1878579169}
+  - component: {fileID: 1878579170}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -3423,7 +3189,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &1878579166
@@ -3503,9 +3269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 3939537837
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
-  Flags: 1
+  Flags: 262145
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 1878579170}
@@ -3544,8 +3308,8 @@ GameObject:
   - component: {fileID: 1907659492}
   - component: {fileID: 1907659491}
   - component: {fileID: 1907659490}
-  - component: {fileID: 1907659495}
   - component: {fileID: 1907659494}
+  - component: {fileID: 1907659495}
   m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -3581,7 +3345,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &1907659491
@@ -3661,8 +3425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 4171416649
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -3702,8 +3464,8 @@ GameObject:
   - component: {fileID: 1992003011}
   - component: {fileID: 1992003010}
   - component: {fileID: 1992003009}
-  - component: {fileID: 1992003014}
   - component: {fileID: 1992003013}
+  - component: {fileID: 1992003014}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: Untagged
@@ -3739,7 +3501,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &1992003010
@@ -3819,8 +3581,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 4180392739
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -3847,37 +3607,6 @@ MonoBehaviour:
     Position: 0.01
     Rotation: 0.01
     Scale: 0.01
---- !u!1 &2009257690
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2009257691}
-  m_Layer: 0
-  m_Name: RaycastPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2009257691
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009257690}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1392616353}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2051725744
 GameObject:
   m_ObjectHideFlags: 0
@@ -3891,8 +3620,8 @@ GameObject:
   - component: {fileID: 2051725748}
   - component: {fileID: 2051725747}
   - component: {fileID: 2051725746}
-  - component: {fileID: 2051725751}
   - component: {fileID: 2051725750}
+  - component: {fileID: 2051725751}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: Untagged
@@ -3928,7 +3657,7 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!135 &2051725747
@@ -4008,8 +3737,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 1978229043
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
   Flags: 1
   NestedObjects: []
   NetworkedBehaviours:
@@ -4133,3 +3860,77 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100147510}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &4955652431398009771
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 57.414093
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3631649
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.70105803
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.09229586
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7010569
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.09229573
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537736, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537738, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: m_Name
+      value: CameraHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4955652430018537743, guid: ba71d7d704397ac4d8e713d84e7a63a7,
+        type: 3}
+      propertyPath: connexionManager
+      value: 
+      objectReference: {fileID: 395995483}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ba71d7d704397ac4d8e713d84e7a63a7, type: 3}

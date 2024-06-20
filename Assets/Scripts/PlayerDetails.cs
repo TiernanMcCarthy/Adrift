@@ -57,8 +57,10 @@ public class PlayerDetails : NetworkBehaviour
             //playerName = playerRef.PlayerId.ToString();
             joinTime=System.DateTime.Now.TimeOfDay.Hours+":" +System.DateTime.Now.TimeOfDay.Minutes.ToString();
         }
-
-        PlayerManagement.instance.RecreatePlayerList();
+        if (PlayerManagement.instance != null)
+        {
+            PlayerManagement.instance.RecreatePlayerList();
+        }
     }
 
     public override void Despawned(NetworkRunner runner, bool hasState)

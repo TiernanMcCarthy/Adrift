@@ -84,25 +84,62 @@ public class PlayerMovement : NetworkBehaviour
 
             spawned= true;
 
+            FindObjectOfType<BasicSpawner>().localPlayer = this;
+
             //FindObjectOfType<MoveCamera>().cameraPostion=
+        }
+        else
+        {
+            jumpLayers = 1 << LayerMask.NameToLayer("Ground");
+            jumpLayers = jumpLayers | 1 << LayerMask.NameToLayer("Object");
+            jumpLayers = jumpLayers | 1 << LayerMask.NameToLayer("Default");
+
+            // rb = GetComponent<Rigidbody>();
+            //   rb.isKinematic = true;
         }
         base.Spawned();
     }
+    public override void Render()
+    {
+        if (HasInputAuthority)
+        {
+            cameraObject.UpdateCamera();
+        }
+    }
+    public Vector3 direction;
     public override void FixedUpdateNetwork()
     {
-        if (HasInputAuthority &&spawned)
+        isGrounded = Physics.SphereCast(transform.position, groundHugRadius, Vector3.down, out groundCastinfo, playerHeight / 2 + 0.1f, jumpLayers);
+        if (GetInput(out PlayerInputData data))
         {
-            MovePlayer();
+            MovePlayerWithData(data.direction);
+            direction= data.direction;
             CalculateSpeed();
-            
+            ControlDrag();
+            //Prevent player from picking up an object they're standing on
+            if (isGrounded)
+            {
+                if (playerPickup.GetHeldObject() == groundCastinfo.collider.gameObject && playerPickup.GetHeldObject() != null)
+                {
+                    playerPickup.DropObject();
+                }
+            }
+            slopeMoveDirection = Vector3.ProjectOnPlane(data.direction, slopeHit.normal);
+
+            if (data.buttons.IsSet(PlayerInputData.JUMP))
+            {
+                Jump();
+            }
+
         }
-        //base.FixedUpdateNetwork();
+        
     }
 
     RaycastHit groundCastinfo;
     // Update is called once per frame
     void Update()
     {
+        /*
         if (HasInputAuthority)
         {
             isGrounded = Physics.SphereCast(transform.position, groundHugRadius, Vector3.down, out groundCastinfo, playerHeight / 2 + 0.1f, jumpLayers);
@@ -121,12 +158,22 @@ public class PlayerMovement : NetworkBehaviour
             {
                 Jump();
             }
-        }
+        }*/
     }
 
     private void Jump()
     {
-        if (playerPickup.GetHeldObject() != groundCastinfo.collider.gameObject)
+        if (playerPickup != null)
+        {
+            if (playerPickup.GetHeldObject() != groundCastinfo.collider.gameObject)
+            {
+                lastJumpTime = Time.time;
+                rb.drag = airDrag;
+                transform.position += (transform.up + groundCastinfo.normal).normalized * 0.1f;
+                rb.AddForce((transform.up + groundCastinfo.normal).normalized * jumpForce, ForceMode.Impulse);
+            }
+        }
+        else
         {
             lastJumpTime = Time.time;
             rb.drag = airDrag;
@@ -135,7 +182,13 @@ public class PlayerMovement : NetworkBehaviour
         }
         
     }
-
+    public Vector3 ReturnInput(float x,float y)
+    {
+       horizontalMovement = Input.GetAxisRaw("Horizontal");
+       verticalMovement = Input.GetAxisRaw("Vertical");
+       moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
+       return moveDirection;
+    }
 
     void CollectInput()
     {
@@ -160,6 +213,37 @@ public class PlayerMovement : NetworkBehaviour
         else
         {
             rb.drag = airDrag;
+        }
+    }
+    void MovePlayerWithData(Vector3 moveDir)
+    {
+        if (isGrounded && !OnSlope())
+        {
+            rb.AddForce(moveDir.normalized * moveSpeed * moveMultiplier, ForceMode.Acceleration);
+        }
+        else if (isGrounded && OnSlope())
+        {
+            rb.AddForce(slopeMoveDirection.normalized * moveSpeed * moveMultiplier, ForceMode.Acceleration);
+        }
+        else
+        {
+            //check playerspeed is more than a max speed, if this is the case, limit their speed but preserve y velocity
+            if (playerSpeedIgnoringY > moveSpeed * 1.5f)
+            {
+                float yVelocity = rb.velocity.y;
+
+                Vector3 velocity = rb.velocity;
+
+                velocity.y = 0;
+
+                velocity = velocity.normalized;
+
+                velocity = moveSpeed * velocity * 1.5f;
+
+                velocity += Vector3.up * yVelocity;
+                rb.velocity = velocity;
+            }
+            rb.AddForce(moveDirection.normalized * moveSpeed * moveMultiplier * airMultiplier, ForceMode.Acceleration);
         }
     }
     void MovePlayer()

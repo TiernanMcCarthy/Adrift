@@ -8,7 +8,7 @@ public class Pickup : NetworkBehaviour
     [Header("Pickup Settings")]
     [SerializeField] public Transform holdPosition;
     [SerializeField] Transform raycastPoint;
-    private GameObject heldObj;
+    private GameObject heldObj { get; set; }
     private Rigidbody heldObjRB;
 
     [Header("Physics Parameters")]
@@ -26,9 +26,17 @@ public class Pickup : NetworkBehaviour
     }
     private void Update()
     {
-        if (HasInputAuthority)
+       
+
+        
+    }
+    public override void FixedUpdateNetwork()
+    {
+        //Manipulate Object
+
+        if (GetInput(out PlayerInputData data))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (data.buttons.IsSet(PlayerInputData.ACTION))
             {
                 if (heldObj == null)
                 {
@@ -49,17 +57,11 @@ public class Pickup : NetworkBehaviour
                 objLastPos = heldObj.transform.position;
             }
         }
-
-        
-    }
-    public override void FixedUpdateNetwork()
-    {
-        //Manipulate Object
         if (heldObj != null && HasInputAuthority)
         {
             MoveObject();
-
         }
+
     }
     void MoveObject()
     {

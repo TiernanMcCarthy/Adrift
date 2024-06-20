@@ -296,9 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SortKey: 333902606
   ObjectInterest: 1
-  _DestroyWhenStateAuthorityLeaves: 0
-  _AllowStateAuthorityOverride: 1
-  Flags: 262145
+  Flags: 131073
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 634766472901629936}
@@ -339,7 +337,7 @@ MonoBehaviour:
   SyncParent: 1
   _interpolationTarget: {fileID: 0}
   UsePreciseRotation: 0
-  UseRenderSleepThresholds: 0
+  UseRenderSleepThresholds: 1
   RenderThresholds:
     UseEnergy: 1
     Position: 0.01

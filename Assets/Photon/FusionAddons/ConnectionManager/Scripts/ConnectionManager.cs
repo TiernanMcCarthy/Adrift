@@ -96,6 +96,7 @@ namespace Fusion.Addons.ConnectionManagerAddon
                 return;
             }
             DontDestroyOnLoad(gameObject);
+            //runner.set = Topologies.ClientServer;
         }
 
         private async void Start()
@@ -232,6 +233,12 @@ namespace Fusion.Addons.ConnectionManagerAddon
                 // Keep track of the player avatars so we can remove it when they disconnect
                 _spawnedUsers.Add(player, networkPlayerObject);
 
+                PlayerDetails temp = networkPlayerObject.GetComponent<PlayerDetails>();
+                playerNum++;
+                //temp.playerName = runner.ActivePlayers.ToString();
+                temp.playerName = runner.ActivePlayers.Count().ToString();
+                temp.playerRef = player;
+
             }
         }
 
@@ -268,7 +275,7 @@ namespace Fusion.Addons.ConnectionManagerAddon
         #region INetworkRunnerCallbacks
         public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
         {
-            if (runner.Topology == Topologies.ClientServer)
+            if (runner.Topology == Topologies.ClientServer )
             {
                 OnPlayerJoinedHostMode(runner, player);
             }
