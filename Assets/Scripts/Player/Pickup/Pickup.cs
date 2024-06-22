@@ -8,6 +8,8 @@ public class Pickup : NetworkBehaviour
     [Header("Pickup Settings")]
     [SerializeField] public Transform holdPosition;
     [SerializeField] Transform raycastPoint;
+
+    public PlayerMovement playerDetails;
     private GameObject heldObj { get; set; }
     private Rigidbody heldObjRB;
 
@@ -21,7 +23,7 @@ public class Pickup : NetworkBehaviour
     {
         if(HasInputAuthority)
         {
-            raycastPoint = FindObjectOfType<CameraManager>().raycastPoint;
+           // raycastPoint = FindObjectOfType<CameraManager>().raycastPoint;
         }
     }
     private void Update()
@@ -41,7 +43,7 @@ public class Pickup : NetworkBehaviour
                 if (heldObj == null)
                 {
                     RaycastHit hit;
-                    if (Physics.Raycast(raycastPoint.transform.position, raycastPoint.forward, out hit, pickupRange))
+                    if (Physics.Raycast(raycastPoint.transform.position, playerDetails.playerLook.orientation.forward, out hit, pickupRange))
                     {
                         //pickupObject
                         PickupObject(hit.transform.gameObject);
@@ -126,6 +128,11 @@ public class Pickup : NetworkBehaviour
     public GameObject GetHeldObject()
     {
         return heldObj; 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(raycastPoint.transform.position, playerDetails.playerLook.orientation.forward*4);
     }
 
 }

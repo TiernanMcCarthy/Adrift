@@ -5,6 +5,8 @@ public struct PlayerInputData : INetworkInput
 {
     public Vector3 direction;
 
+    public Vector2 rotationVect;
+
     public bool jumpState;
 
     public bool actionState;

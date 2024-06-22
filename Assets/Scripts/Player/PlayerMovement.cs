@@ -44,9 +44,12 @@ public class PlayerMovement : NetworkBehaviour
     public float groundHugRadius = 0.4f;
     public float jumpForce = 5.0f;
 
+    [Networked]
+    Vector3 lookVector { get; set; }
+
     Vector3 slopeMoveDirection;
 
-   
+    
 
     public Rigidbody rb;
 
@@ -76,7 +79,7 @@ public class PlayerMovement : NetworkBehaviour
 
             cameraObject.cameraPostion = cameraTargetPos;
 
-            playerPickup.holdPosition = FindObjectOfType<CameraManager>().grabPosition;
+            //playerPickup.holdPosition = FindObjectOfType<CameraManager>().grabPosition;
 
             playerLook.cam = cameraObject.transform;
 
@@ -110,12 +113,23 @@ public class PlayerMovement : NetworkBehaviour
     public override void FixedUpdateNetwork()
     {
         isGrounded = Physics.SphereCast(transform.position, groundHugRadius, Vector3.down, out groundCastinfo, playerHeight / 2 + 0.1f, jumpLayers);
+
+        if(HasInputAuthority)
+        {
+            lookVector= playerLook.orientation.localEulerAngles;
+        }
         if (GetInput(out PlayerInputData data))
         {
             MovePlayerWithData(data.direction);
             direction= data.direction;
+            playerLook.UpdateRotation(data.rotationVect);
+            playerLook.SetOrientation(data.rotationVect.y);
             CalculateSpeed();
             ControlDrag();
+
+            //transform.rotation = Quaternion.Euler(lookVector);
+            
+            //transform.forward = orientation.transform.forward;
             //Prevent player from picking up an object they're standing on
             if (isGrounded)
             {
@@ -165,12 +179,17 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (playerPickup != null)
         {
-            if (playerPickup.GetHeldObject() != groundCastinfo.collider.gameObject)
+            if (groundCastinfo.collider != null)
             {
-                lastJumpTime = Time.time;
-                rb.drag = airDrag;
-                transform.position += (transform.up + groundCastinfo.normal).normalized * 0.1f;
-                rb.AddForce((transform.up + groundCastinfo.normal).normalized * jumpForce, ForceMode.Impulse);
+
+
+                if (playerPickup.GetHeldObject() != groundCastinfo.collider.gameObject)
+                {
+                    lastJumpTime = Time.time;
+                    rb.drag = airDrag;
+                    transform.position += (transform.up + groundCastinfo.normal).normalized * 0.1f;
+                    rb.AddForce((transform.up + groundCastinfo.normal).normalized * jumpForce, ForceMode.Impulse);
+                }
             }
         }
         else
@@ -186,7 +205,11 @@ public class PlayerMovement : NetworkBehaviour
     {
        horizontalMovement = Input.GetAxisRaw("Horizontal");
        verticalMovement = Input.GetAxisRaw("Vertical");
+        Vector3 oldRot= orientation.transform.localRotation.eulerAngles;
+
+        orientation.transform.localRotation = Quaternion.Euler(0, oldRot.y, oldRot.z);
        moveDirection = orientation.forward * verticalMovement + orientation.right * horizontalMovement;
+        orientation.transform.localRotation = Quaternion.Euler(oldRot);
        return moveDirection;
     }
 
@@ -310,5 +333,10 @@ public class PlayerMovement : NetworkBehaviour
 
         lastPos = transform.position;
         lastPos.y= 0;
+    }
+
+    public float GetDirection()
+    {
+        return orientation.transform.localEulerAngles.y;
     }
 }

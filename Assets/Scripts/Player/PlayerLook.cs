@@ -11,7 +11,10 @@ public class PlayerLook : NetworkBehaviour
     private float sensY;
 
     [SerializeField] public Transform cam;
-    [SerializeField] Transform orientation;
+    [SerializeField] public Transform orientation;
+   // public Transform 
+
+    public Transform cosmeticBody;
     float mouseX;
     float mouseY;
 
@@ -22,9 +25,9 @@ public class PlayerLook : NetworkBehaviour
 
     public PlayerMovement playerBehaviour;
 
-    bool isReady=false;
+    bool isReady = false;
 
-  
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,28 +37,49 @@ public class PlayerLook : NetworkBehaviour
         Cursor.visible = false;
     }
 
-   
+
 
     // Update is called once per frame
     void Update()
     {
         if (HasInputAuthority)
         {
-            CollectInput();
+            Vector2 rot = CollectInput();
+            cam.localRotation = Quaternion.Euler(rot.x,rot.y,0);
+            // CollectInput();
             if (cam != null)
             {
 
 
-                cam.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+                //cam.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
 
-                orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+                // playerBehaviour.transform.rotation = Quaternion.Euler(0, yRotation, 0);
             }
 
         }
 
     }
 
-    void CollectInput()
+    public void UpdateRotation(Vector2 rotation)
+    {
+        if (HasInputAuthority)
+        {
+            //cam.localRotation = Quaternion.Euler(xRotation, yRotation, 0);
+        }
+        orientation.localRotation = Quaternion.Euler(rotation.x,rotation.y,0);
+        cosmeticBody.transform.localRotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    public void SetOrientation(float yRot)
+    {
+        if (!HasInputAuthority)
+        {
+            yRotation = yRot;
+        }
+        //orientation.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+    }
+
+    public Vector2 CollectInput()
     {
         mouseX = Input.GetAxisRaw("Mouse X");
         mouseY = Input.GetAxisRaw("Mouse Y");
@@ -65,5 +89,12 @@ public class PlayerLook : NetworkBehaviour
 
         xRotation = Mathf.Clamp(xRotation, -90.0f, 90);
 
+        return new Vector2(xRotation, yRotation);
     }
+
+    public Vector2 SampleInput()
+    {
+        return new Vector2(xRotation, yRotation);
+    }
+
 }

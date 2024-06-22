@@ -138,20 +138,11 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         if (localPlayer != null)
         {
             data.direction = localPlayer.ReturnInput(playerControls.PlayerCharacter.Horizontal.ReadValue<float>(), playerControls.PlayerCharacter.Vertical.ReadValue<float>());
+            data.rotationVect = localPlayer.playerLook.SampleInput();
         }
         else
         {
-            if (Input.GetKey(KeyCode.W))
-                data.direction += Vector3.forward;
-
-            if (Input.GetKey(KeyCode.S))
-                data.direction += Vector3.back;
-
-            if (Input.GetKey(KeyCode.A))
-                data.direction += Vector3.left;
-
-            if (Input.GetKey(KeyCode.D))
-                data.direction += Vector3.right;
+            Debug.LogError("Local Player has not been defined");
         }
         data.buttons.Set(PlayerInputData.ACTION,action);
         action = false;
