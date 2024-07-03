@@ -1,0 +1,34 @@
+{
+    "name": "UIControls",
+    "maps": [
+        {
+            "name": "UI Controls",
+            "id": "93474399-b40e-4cd0-af6a-2251c0041fee",
+            "actions": [
+                {
+                    "name": "ToggleMenu",
+                    "type": "Button",
+                    "id": "88c57138-fffe-44d0-9eb9-06b88106bf65",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1e6f684a-3553-4b1e-8c65-38702bd64844",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
