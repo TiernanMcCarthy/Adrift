@@ -13,6 +13,9 @@ namespace GameSettings
         [SerializeField]
         private Slider slider;
 
+        [SerializeField]
+        private TMPro.TMP_Text value;
+
         public override void PopulateDetails(BaseOptionsUIManager p,FieldInfo fi)
         {
             field = fi;
@@ -23,12 +26,18 @@ namespace GameSettings
             slider.maxValue = localInstance.maxValue;
             slider.value = localInstance.value;
             fieldTitle.text = localInstance.GetName();
-            p.AddToUICanvas(gameObject);
+            p.AddToUICanvas(this);
         }
         public override void WriteValue()
         {
-            base.WriteValue();
+            localInstance.value= slider.value;
+            OptionUIController.instance.currentOption.hasChanged = true;
+            field.SetValue(parent.settings, localInstance);
         }
 
+        public override void ChangeValue()
+        {
+            value.text = slider.value.ToString("F2");
+        }
     }
 }

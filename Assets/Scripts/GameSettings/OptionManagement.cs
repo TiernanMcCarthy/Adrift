@@ -14,16 +14,31 @@ namespace GameSettings
 
         public TMPro.TMP_Text buttonAsset;
 
-        public virtual void ApplySettings()
-        {
+        public GameObject uiContent;
 
+        public virtual void ToggleContent(bool toggle)
+        {
+            uiContent.SetActive(toggle);
         }
 
+        public virtual void ApplySettings(List<FieldHolder> fieldOptions)
+        {
+            foreach(FieldHolder fh in fieldOptions)
+            {
+                fh.WriteValue();
+            }
+        }
+        protected virtual void GenerateUI()
+        {
+            
+        }
         public void OnSelected()
         {
             Color oldColour = buttonAsset.color;
             oldColour.a = 1f;
             buttonAsset.color = oldColour;
+            OptionUIController.instance.currentOption = this;
+            GenerateUI();
         }
 
         public void Deselected()

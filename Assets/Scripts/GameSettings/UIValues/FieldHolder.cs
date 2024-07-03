@@ -15,7 +15,7 @@ namespace GameSettings
         public TMP_Text fieldTitle;
 
 
-        public virtual void ChangeValue(BaseOptionsUIManager parent)
+        public virtual void ChangeValue()
         {
 
         }

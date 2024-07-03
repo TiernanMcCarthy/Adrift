@@ -17,9 +17,20 @@ namespace GameSettings
         [SerializeField] private List<OptionManagement> optionsToCheck = new List<OptionManagement>();
 
         private UISystemControls uiInput;
+
+        public static OptionUIController instance;
         // Start is called before the first frame update
         void Start()
         {
+            if(instance==null)
+            {
+                instance = this;
+            }
+            else if(instance!=this)
+            {
+                Destroy(gameObject);
+            }
+
             //Find and populate options so that they can be managed later
             OptionManagement[] temp = FindObjectsOfType<OptionManagement>();
             foreach (OptionManagement obj in temp)
@@ -80,6 +91,14 @@ namespace GameSettings
                 optionsMenu.SetActive(true);
             }
         }
+        public void HideSettings()
+        {
+            foreach(OptionManagement om in optionsToCheck)
+            {
+                om.ToggleContent(false);
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {

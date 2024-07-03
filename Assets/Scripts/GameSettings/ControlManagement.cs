@@ -10,22 +10,25 @@ namespace GameSettings
         BaseOptionsUIManager uiManager;
 
         public Toggle result;
-        public override void ApplySettings()
+        public override void ApplySettings(List<FieldHolder> fieldOptions)
         {
-            base.ApplySettings();
+            
         }
 
         private void Start()
+        { 
+
+        }
+        protected override void GenerateUI()
         {
-            uiManager=FindObjectOfType<BaseOptionsUIManager>();
+            uiManager = FindObjectOfType<BaseOptionsUIManager>();
             ControlOptions controlOptions = LoadControlOptions();
             uiManager.settings = controlOptions;
             uiManager.GenerateUI();
         }
-
         ControlOptions LoadControlOptions()
         {
-            string json = PlayerPrefs.GetString(nameof(ControlOptions), string.Empty);
+            string json = PlayerPrefs.GetString("ControlOptions", string.Empty);
             if (!string.IsNullOrEmpty(json))
             {
                 return JsonUtility.FromJson<ControlOptions>(json);

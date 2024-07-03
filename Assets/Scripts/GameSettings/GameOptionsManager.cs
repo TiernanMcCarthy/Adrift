@@ -112,9 +112,15 @@ namespace GameSettings
 
         }
 
-        public static void SaveOption()
+        public static void SaveOption(BaseSetting saveItem)
         {
+            string itemID = saveItem.GetType().Name;
 
+            string JSON = JsonUtility.ToJson((ControlOptions)saveItem);
+            
+            PlayerPrefs.SetString(itemID, JSON);
+
+            PlayerPrefs.Save();
         }
 
         // Update is called once per frame
