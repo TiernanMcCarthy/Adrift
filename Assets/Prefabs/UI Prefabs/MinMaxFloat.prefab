@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 6685543125958595028}
   - component: {fileID: 2302360113936760506}
   m_Layer: 0
-  m_Name: MinMaxFloat 1
+  m_Name: MinMaxFloat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -15,6 +15,8 @@ public class BaseOptionsUIManager : MonoBehaviour
     public List<FieldHolder> fieldButtons = new List<FieldHolder>();
 
     public FieldHolderFloatMM minMaxFloatPrefab;
+
+    public FieldHolderBool boolPrefab;
     void Start()
     {
         //GenerateUI();

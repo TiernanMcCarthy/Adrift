@@ -3,7 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using WebSocketSharp;
+///
+/// 
+/// TO DO: Think about rebindable controls, this would be a bit more complex, but not essential right now.
+///
+///
+
 
 namespace GameSettings
 {
@@ -11,7 +16,7 @@ namespace GameSettings
     [Serializable]
     public class OptionField
     {
-        [SerializeField]protected string fieldName;
+        protected string fieldName;
 
         public string GetName()
         {
@@ -41,6 +46,24 @@ namespace GameSettings
             this.maxValue = maxValue;
             this.value = value;
         }
+    }
+
+    [System.Serializable]
+    public class SaveBool : OptionField
+    {
+        public bool value;
+
+        public SaveBool(string fieldTitle,bool value)
+        {
+            this.value = value;
+            this.fieldName = fieldTitle;
+        }
+
+        public static implicit operator bool(SaveBool boolean)
+        {
+            return boolean.value;
+        }
+
     }
     [System.Serializable]
     public class MinMaxFloat2 : OptionField
@@ -78,11 +101,10 @@ namespace GameSettings
     public class ControlOptions : BaseSetting
     {
         public MinMaxFloat lookSensitivity = new MinMaxFloat("Look Sensitivity",0.1f, 100, 22);
-        public bool invertView = false;
 
-        public bool toggleCrouch = false;
+        public SaveBool invertView = new SaveBool("Invert View Controls", false);
 
-        public bool newThrowOffVariable = true;
+        public SaveBool toggleCrouch = new SaveBool("Toggle Crouch", false);
 
     }
     public class GameOptionsManager: MonoBehaviour
@@ -96,10 +118,11 @@ namespace GameSettings
         {
             ///
             /// Control Options Load
-            ///
+            //
+
             string json = PlayerPrefs.GetString("ControlOptions");
             ControlOptions local;
-            if (!json.IsNullOrEmpty())
+            if (string.IsNullOrEmpty(json))
             {
                 local = JsonUtility.FromJson<ControlOptions>(PlayerPrefs.GetString("ControlOptions"));
             }
@@ -116,7 +139,7 @@ namespace GameSettings
         {
             string itemID = saveItem.GetType().Name;
 
-            string JSON = JsonUtility.ToJson((ControlOptions)saveItem);
+            string JSON = JsonUtility.ToJson(saveItem);
             
             PlayerPrefs.SetString(itemID, JSON);
 
